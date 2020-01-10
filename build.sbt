@@ -6,7 +6,7 @@ ThisBuild / resolvers ++= Seq(
 
 )
 
-name := "SparkDemo"
+name := "DianDiExample"
 
 version := "0.1-SNAPSHOT"
 
@@ -59,7 +59,8 @@ lazy val root = (project in file(".")).
     libraryDependencies += "com.alibaba" % "fastjson" % "1.2.42" ,
     libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.8" ,
     libraryDependencies += "redis.clients" % "jedis" % "3.0.0",
-    libraryDependencies += "com.typesafe.play" %% "play-ws" % "2.4.3",
+//    libraryDependencies += "com.typesafe.play" %% "play-ws" % "2.4.3" exclude("com.typesafe.play","play"),
+//    libraryDependencies += "com.typesafe.play" %% "play-ws" % "2.4.3",
     libraryDependencies += "com.maxmind.geoip2" % "geoip2" % "2.5.0",
     libraryDependencies += "com.github.scopt" %% "scopt" % "3.7.1",
     libraryDependencies += "org.roaringbitmap" % "RoaringBitmap" % "0.8.6",
@@ -74,11 +75,10 @@ assemblyMergeStrategy in assembly := {
 assembly / mainClass := Some("com.opera.adx.Job")
 
 // make run command include the provided dependencies
-Compile / run  := Defaults.runTask(Compile / fullClasspath,
+Compile / run  := Defaults.runTask(Compile/fullClasspath,
   Compile / run / mainClass,
   Compile / run / runner
 ).evaluated
-
 
 
 

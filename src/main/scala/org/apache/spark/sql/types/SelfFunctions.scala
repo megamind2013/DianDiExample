@@ -1,12 +1,8 @@
 package org.apache.spark.sql
 
-import org.apache.spark.sql.{Column, Row}
+import org.apache.spark.sql.catalyst.{InternalRow}
 import org.apache.spark.sql.catalyst.expressions._
-import org.apache.spark.sql.catalyst.plans.logical.UnaryNode
-import org.apache.spark.sql.catalyst.{InternalRow, trees}
-import org.apache.spark.sql.catalyst.expressions._
-import org.apache.spark.sql.catalyst.expressions.aggregate.{AggregateExpression, AggregateFunction, ImperativeAggregate, Kurtosis}
-import org.apache.spark.sql.catalyst.trees
+import org.apache.spark.sql.catalyst.expressions.aggregate.{ImperativeAggregate, Kurtosis}
 import org.apache.spark.sql.types._
 import org.roaringbitmap.longlong.Roaring64NavigableMap
 

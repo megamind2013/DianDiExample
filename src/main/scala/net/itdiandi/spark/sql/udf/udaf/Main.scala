@@ -1,7 +1,7 @@
 package net.itdiandi.sql.udf.udaf
 
 import org.apache.spark.sql.{Row, SaveMode, SparkSession}
-
+import net.itdiandi.spark.sql.udf.udaf.AggregatorExample
 /**
   *
   */
@@ -26,6 +26,20 @@ object Main {
 //    spark.sql("select count(1) as count, u_avg(age) as avg_age from v_user").show()
 //    // 按照性别分组求平均年龄
 //    spark.sql("select sex, count(1) as count, u_avg(age) as avg_age from v_user group by sex").show()
+
+
+    /**
+      * 简单示例
+      */
+
+    val user = spark.read.json("src/main/resources/data/user").as[User]
+
+    user.printSchema()
+    user.show(false)
+    user.select(AggregatorExample.toColumn.name("avg")).show()
+
+
+
 
     /**
       * UserDefinedAggregateFunctionBitMapExample结合BitMap一起使用
@@ -53,5 +67,7 @@ object Main {
       */
 
 
+  }
+  case class User(id: Long, name: String, sex: String, age: Long) {
   }
 }
