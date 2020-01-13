@@ -1,7 +1,8 @@
 package net.itdiandi.sql.udf.udaf
 
 import org.apache.spark.sql.{Row, SaveMode, SparkSession}
-import net.itdiandi.spark.sql.udf.udaf.AggregatorExample
+import net.itdiandi.spark.sql.udf.udaf._
+import net.itdiandi.spark.sql.udf.utils._
 /**
   *
   */
@@ -30,13 +31,14 @@ object Main {
 
     /**
       * 简单示例
+      * 实现带类型udap  有问题，没测通
       */
-
-    val user = spark.read.json("src/main/resources/data/user").as[User]
-
-    user.printSchema()
-    user.show(false)
-    user.select(AggregatorExample.toColumn.name("avg")).show()
+//
+//    val user = spark.read.json("src/main/resources/data/user").as[User]
+//
+//    user.printSchema()
+//    user.show(false)
+//    user.select(AggregatorExample.toColumn.name("avg")).show()
 
 
 
@@ -65,9 +67,26 @@ object Main {
       * UserDefinedAggregateFunctionHyperLogLogExample结合hyperloglog一起使用
       * 统计uv
       */
+    def hyperLogLog = new UserDefinedAggregateFunctionHyperLogLogExample(0.01)
 
+    var user = spark.read.json("src/main/resources/data/user")
 
-  }
-  case class User(id: Long, name: String, sex: String, age: Long) {
+//    user
+//      .groupBy("name")
+//      .agg(hyperLogLog($"id").name("res"))
+//      .select($"name",$"res" ("count").as("uv_count"), $"res" ("hll").as("hll"))
+//      .write.save("/Data/hyperLogLog/user")
+
+    def mergeHyperLogLog = new MergeHyperLogLogUDAF
+
+    var oldDF = spark.read.parquet("/Data/hyperLogLog/user")
+
+    var newDF = user
+      .groupBy("name")
+      .agg(hyperLogLog($"id").name("res"))
+      .select($"name",$"res" ("count").as("uv_count"), $"res" ("hll").as("hll"))
+
+    var tempDF = newDF.join(oldDF,oldDF("name")===newDF("name"),"full")
+    tempDF.show()
   }
 }
