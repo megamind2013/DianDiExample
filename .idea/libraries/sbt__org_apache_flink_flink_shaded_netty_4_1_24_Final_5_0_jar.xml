@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="sbt: org.apache.flink:flink-shaded-netty:4.1.24.Final-5.0:jar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.ivy2/cache/org.apache.flink/flink-shaded-netty/jars/flink-shaded-netty-4.1.24.Final-5.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib_managed/jars/org.apache.flink/flink-shaded-netty/flink-shaded-netty-4.1.24.Final-5.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

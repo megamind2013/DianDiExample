@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="sbt: org.antlr:ST4:4.0.4:jar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.ivy2/cache/org.antlr/ST4/jars/ST4-4.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib_managed/jars/org.antlr/ST4/ST4-4.0.4.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.ivy2/cache/org.antlr/ST4/srcs/ST4-4.0.4-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib_managed/srcs/org.antlr/ST4/ST4-4.0.4-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

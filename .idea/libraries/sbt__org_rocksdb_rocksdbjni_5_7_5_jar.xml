@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="sbt: org.rocksdb:rocksdbjni:5.7.5:jar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.ivy2/cache/org.rocksdb/rocksdbjni/jars/rocksdbjni-5.7.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib_managed/jars/org.rocksdb/rocksdbjni/rocksdbjni-5.7.5.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.ivy2/cache/org.rocksdb/rocksdbjni/srcs/rocksdbjni-5.7.5-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib_managed/srcs/org.rocksdb/rocksdbjni/rocksdbjni-5.7.5-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

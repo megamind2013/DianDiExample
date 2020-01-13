@@ -7,13 +7,16 @@ import org.apache.spark.sql.types.{BinaryType, _}
 
 
 class MergeHyperLogLogUDAF extends UserDefinedAggregateFunction{
-  override def inputSchema: StructType = new StructType().add("hll",BinaryType)
-  override def bufferSchema: StructType = new StructType().add("hll",BinaryType)
+  override def inputSchema: StructType =
+    new StructType().add("hll",BinaryType)
+  override def bufferSchema: StructType =
+    new StructType().add("hll",BinaryType)
   override def dataType: DataType = DataTypes.createStructType(
     Array(StructField("count",DataTypes.LongType),StructField("hll",BinaryType)))
 
   override def deterministic: Boolean = true
-  override def initialize(buffer: MutableAggregationBuffer): Unit = buffer.update(0,null)
+  override def initialize(buffer: MutableAggregationBuffer): Unit =
+    buffer.update(0,null)
 
   override def update(buffer: MutableAggregationBuffer, input: Row): Unit = {
     var  bufferHll:HyperLogLogPlus = null

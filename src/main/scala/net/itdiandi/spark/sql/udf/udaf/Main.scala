@@ -80,13 +80,21 @@ object Main {
     def mergeHyperLogLog = new MergeHyperLogLogUDAF
 
     var oldDF = spark.read.parquet("/Data/hyperLogLog/user")
-
+    oldDF.printSchema()
     var newDF = user
       .groupBy("name")
       .agg(hyperLogLog($"id").name("res"))
       .select($"name",$"res" ("count").as("uv_count"), $"res" ("hll").as("hll"))
 
-    var tempDF = newDF.join(oldDF,oldDF("name")===newDF("name"),"full")
+//  mergeHyperLogLog只能接收一个参数，会报https://myclusterbox.com/view/1443
+//     var tempDF = newDF.join(oldDF,oldDF("name")===newDF("name"),"full")
+//      .select(newDF("name"), mergeHyperLogLog(newDF("hll"), oldDF("hll")).as("hll"))
+
+    var tempDF = newDF.union(oldDF)
+      .groupBy("name")
+      .agg(mergeHyperLogLog($"hll").name("res"))
+      .select($"name",$"res" ("count").as("uv_count"), $"res" ("hll").as("hll"))
+
     tempDF.show()
   }
 }

@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="sbt: net.openhft:zero-allocation-hashing:0.8:jar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.ivy2/cache/net.openhft/zero-allocation-hashing/bundles/zero-allocation-hashing-0.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib_managed/bundles/net.openhft/zero-allocation-hashing/zero-allocation-hashing-0.8.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.ivy2/cache/net.openhft/zero-allocation-hashing/srcs/zero-allocation-hashing-0.8-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib_managed/srcs/net.openhft/zero-allocation-hashing/zero-allocation-hashing-0.8-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

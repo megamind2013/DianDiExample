@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="sbt: org.roaringbitmap:RoaringBitmap:0.8.6:jar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.ivy2/cache/org.roaringbitmap/RoaringBitmap/jars/RoaringBitmap-0.8.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib_managed/jars/org.roaringbitmap/RoaringBitmap/RoaringBitmap-0.8.6.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.ivy2/cache/org.roaringbitmap/RoaringBitmap/srcs/RoaringBitmap-0.8.6-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib_managed/srcs/org.roaringbitmap/RoaringBitmap/RoaringBitmap-0.8.6-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
