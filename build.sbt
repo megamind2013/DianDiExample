@@ -1,3 +1,5 @@
+import sbt.Keys.libraryDependencies
+
 ThisBuild / resolvers ++= Seq(
   Resolver.mavenLocal,
   "aliyun" at "http://maven.aliyun.com/nexus/content/groups/public/",
@@ -28,7 +30,8 @@ val sparkVersion = "2.0.2"
 
 val sparkDependencies = Seq(
   "org.apache.spark" %% "spark-sql" % sparkVersion ,
-  "org.apache.spark" %% "spark-hive" % sparkVersion ,
+  "org.apache.spark" %% "spark-hive" % sparkVersion,
+  "org.apache.spark" %% "spark-core" % sparkVersion
 )
 
 val flinkVersion = "1.7.0"
@@ -49,7 +52,8 @@ val flinkDependencies = Seq(
 
 val mysqlJdbcVersion = "5.1.8"
 
-lazy val root = (project in file(".")).
+//lazy
+val root = (project in file(".")).
   settings(
     libraryDependencies ++= hadoopDependencies,
     libraryDependencies ++= sparkDependencies,
@@ -64,8 +68,9 @@ lazy val root = (project in file(".")).
     libraryDependencies += "com.maxmind.geoip2" % "geoip2" % "2.5.0",
     libraryDependencies += "com.github.scopt" %% "scopt" % "3.7.1",
     libraryDependencies += "org.roaringbitmap" % "RoaringBitmap" % "0.8.6",
-    libraryDependencies += "junit" % "junit" % "4.10"
+    libraryDependencies += "junit" % "junit" % "4.10" ,
 
+    libraryDependencies += "org.codehaus.janino" % "janino" % "2.7.8"
   )
 
 assemblyMergeStrategy in assembly := {

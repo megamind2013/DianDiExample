@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="sbt: org.apache.flink:flink-shaded-guava:18.0-5.0:jar">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib_managed/jars/org.apache.flink/flink-shaded-guava/flink-shaded-guava-18.0-5.0.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
