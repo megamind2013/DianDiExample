@@ -26,12 +26,14 @@ val hadoopDependencies = Seq(
   "com.hadoop.gplcompression" % "hadoop-lzo" % "0.4.20",
 )
 
-val sparkVersion = "2.0.2"
+//val sparkVersion = "2.0.2"
+val sparkVersion = "2.4.4"
 
 val sparkDependencies = Seq(
   "org.apache.spark" %% "spark-sql" % sparkVersion ,
   "org.apache.spark" %% "spark-hive" % sparkVersion,
-  "org.apache.spark" %% "spark-core" % sparkVersion
+  "org.apache.spark" %% "spark-core" % sparkVersion,
+  "org.apache.spark" %% "spark-yarn" % sparkVersion
 )
 
 val flinkVersion = "1.7.0"
