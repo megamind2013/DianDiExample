@@ -1,0 +1,5 @@
+操作excel方式
+一.jxl操作excel
+  	缺点：
+  		1.jxl不支持excel 2007 文件(*.xlsx)，只支持 excel 2003 (*.xls)
+二.poi操作excel

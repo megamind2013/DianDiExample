@@ -1,0 +1,2 @@
+Zxing是谷歌的
+QRcode是日本的
