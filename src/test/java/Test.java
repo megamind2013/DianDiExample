@@ -14,7 +14,18 @@ public class Test {
 //
 //        System.out.println(shipWithinDays(new int[]{1,2,3,1,1},4));
 
-        System.out.println(numDupDigitsAtMostN(765));
+    	 String sql = "insert into bigdata.user select * from users a left outer join address b on a.address_id = b.id";
+
+//         statementData = TidbSQLHelper.getStatementData(sql);
+//    		        val statement = statementData.statement
+//    		        if(statement is TableData) {
+//    		            Assert.assertEquals(StatementType.INSERT_SELECT, statementData.type)
+//    		            Assert.assertEquals("bigdata", statement.outpuTables.get(0).databaseName)
+//    		            Assert.assertEquals("user", statement.outpuTables.get(0).tableName)
+//    		            Assert.assertEquals(2, statement.inputTables.size)
+//    		        } else {
+//    		            Assert.fail()
+//    		        }
     }
     // 十进制整数的反码
     public static int bitwiseComplement(int N) {
