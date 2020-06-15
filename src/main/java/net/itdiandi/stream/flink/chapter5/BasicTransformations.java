@@ -15,9 +15,9 @@
  */
 package net.itdiandi.stream.flink.chapter5;
 
-import io.github.streamingwithflink.util.SensorReading;
-import io.github.streamingwithflink.util.SensorSource;
-import io.github.streamingwithflink.util.SensorTimeAssigner;
+import net.itdiandi.stream.flink.util.SensorReading;
+import net.itdiandi.stream.flink.util.SensorSource;
+import net.itdiandi.stream.flink.util.SensorTimeAssigner;
 import org.apache.flink.api.common.functions.FilterFunction;
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.common.functions.MapFunction;

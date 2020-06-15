@@ -1,4 +1,4 @@
-package net.itdiandi.flink.rpc.demo;
+package net.itdiandi.stream.flink.rpc.demo;
 
 import io.netty.channel.ChannelHandlerContext;
 import net.itdiandi.flink.rpc.common.IMessageHandler;

@@ -1,6 +1,6 @@
 package net.itdiandi.stream.flink.chapter5.kursk;
 
-import io.github.streamingwithflink.util.SensorReading;
+import net.itdiandi.stream.flink.util.SensorReading;
 import org.apache.flink.api.java.tuple.Tuple3;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.KeyedStream;

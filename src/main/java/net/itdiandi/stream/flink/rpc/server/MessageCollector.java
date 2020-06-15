@@ -1,4 +1,4 @@
-package net.itdiandi.flink.rpc.server;
+package net.itdiandi.stream.flink.rpc.server;
 
 import com.google.common.collect.Queues;
 import io.netty.channel.ChannelHandler;

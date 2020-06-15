@@ -1,4 +1,4 @@
-package net.itdiandi.flink.rpc.client;
+package net.itdiandi.stream.flink.rpc.client;
 //定义客户端异常,用于同一抛出RPC错误
 public class RPCException extends RuntimeException {
 

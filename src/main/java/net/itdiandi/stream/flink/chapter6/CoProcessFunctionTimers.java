@@ -15,8 +15,8 @@
  */
 package net.itdiandi.stream.flink.chapter6;
 
-import io.github.streamingwithflink.util.SensorReading;
-import io.github.streamingwithflink.util.SensorSource;
+import net.itdiandi.stream.flink.util.SensorReading;
+import net.itdiandi.stream.flink.util.SensorSource;
 import org.apache.flink.api.common.state.ValueState;
 import org.apache.flink.api.common.state.ValueStateDescriptor;
 import org.apache.flink.api.common.typeinfo.Types;

@@ -1,4 +1,4 @@
-package net.itdiandi.flink.rpc.client;
+package net.itdiandi.stream.flink.rpc.client;
 
 import org.apache.flink.runtime.executiongraph.Execution;
 

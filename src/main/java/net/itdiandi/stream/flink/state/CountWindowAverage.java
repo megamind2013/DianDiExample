@@ -1,4 +1,4 @@
-package net.itdiandi.flink.state;
+package net.itdiandi.stream.flink.state;
 
 import java.util.Collection;
 import java.util.Collections;

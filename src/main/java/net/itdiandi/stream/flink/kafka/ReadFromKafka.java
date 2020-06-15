@@ -1,4 +1,4 @@
-package net.itdiandi.flink.kafka;
+package net.itdiandi.stream.flink.kafka;
 
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 

@@ -1,6 +1,6 @@
 package net.itdiandi.stream.flink.chapter6.processfunction;
 
-import io.github.streamingwithflink.chapter5.kursk.ElecMeterSource;
+import net.itdiandi.stream.flink.chapter5.kursk.ElecMeterSource;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;

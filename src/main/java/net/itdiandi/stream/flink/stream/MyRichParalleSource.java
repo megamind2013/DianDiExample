@@ -1,4 +1,4 @@
-package net.itdiandi.flink.stream;
+package net.itdiandi.stream.flink.stream;
 
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.functions.source.RichParallelSourceFunction;

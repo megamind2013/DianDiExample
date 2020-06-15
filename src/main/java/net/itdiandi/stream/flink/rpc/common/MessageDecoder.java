@@ -1,4 +1,4 @@
-package net.itdiandi.flink.rpc.common;
+package net.itdiandi.stream.flink.rpc.common;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;

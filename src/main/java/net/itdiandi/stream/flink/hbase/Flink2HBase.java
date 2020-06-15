@@ -1,4 +1,4 @@
-package net.itdiandi.flink.hbase;
+package net.itdiandi.stream.flink.hbase;
 
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;

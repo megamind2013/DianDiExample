@@ -1,4 +1,4 @@
-package net.itdiandi.flink.hbase.loader;
+package net.itdiandi.stream.flink.hbase.loader;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.hadoop.conf.Configuration;

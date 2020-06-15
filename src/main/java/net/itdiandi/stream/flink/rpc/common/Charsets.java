@@ -1,4 +1,4 @@
-package net.itdiandi.flink.rpc.common;
+package net.itdiandi.stream.flink.rpc.common;
 
 import java.nio.charset.Charset;
 

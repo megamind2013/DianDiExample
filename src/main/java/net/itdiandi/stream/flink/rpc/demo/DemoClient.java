@@ -1,4 +1,4 @@
-package net.itdiandi.flink.rpc.demo;
+package net.itdiandi.stream.flink.rpc.demo;
 
 import java.io.Serializable;
 

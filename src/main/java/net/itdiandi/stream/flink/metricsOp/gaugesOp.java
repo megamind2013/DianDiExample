@@ -1,4 +1,4 @@
-package net.itdiandi.flink.metricsOp;
+package net.itdiandi.stream.flink.metricsOp;
 
 import com.codahale.metrics.ConsoleReporter;
 import com.codahale.metrics.Gauge;

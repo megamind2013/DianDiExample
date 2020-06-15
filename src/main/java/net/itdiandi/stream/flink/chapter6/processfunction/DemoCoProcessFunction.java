@@ -1,7 +1,7 @@
 package net.itdiandi.stream.flink.chapter6.processfunction;
 
-import io.github.streamingwithflink.chapter5.kursk.ElecMeterReading;
-import io.github.streamingwithflink.chapter5.kursk.ElecMeterSource;
+import net.itdiandi.stream.flink.chapter5.kursk.ElecMeterReading;
+import net.itdiandi.stream.flink.chapter5.kursk.ElecMeterSource;
 import org.apache.flink.api.common.state.ValueState;
 import org.apache.flink.api.common.state.ValueStateDescriptor;
 import org.apache.flink.api.common.typeinfo.Types;

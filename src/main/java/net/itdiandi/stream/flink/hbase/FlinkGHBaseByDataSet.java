@@ -1,4 +1,4 @@
-package net.itdiandi.flink.hbase;
+package net.itdiandi.stream.flink.hbase;
 
 import org.apache.flink.addons.hbase.TableInputFormat;
 import org.apache.flink.api.java.DataSet;

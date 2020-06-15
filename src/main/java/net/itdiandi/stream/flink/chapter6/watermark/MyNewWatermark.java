@@ -1,6 +1,6 @@
 package net.itdiandi.stream.flink.chapter6.watermark;
 
-import io.github.streamingwithflink.chapter5.kursk.ElecMeterReading;
+import net.itdiandi.stream.flink.chapter5.kursk.ElecMeterReading;
 import org.apache.flink.streaming.api.functions.AssignerWithPeriodicWatermarks;
 import org.apache.flink.streaming.api.watermark.Watermark;
 

@@ -1,4 +1,4 @@
-package net.itdiandi.flink.rpc.server;
+package net.itdiandi.stream.flink.rpc.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;

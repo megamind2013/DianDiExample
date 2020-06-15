@@ -1,6 +1,6 @@
 package net.itdiandi.stream.sparkstreaming;
 
-public class TaskStartStop{
+public class TaskStartStop {
 
 	// 通过flag文件来判断
 	new Tread(new Runnable(){
@@ -27,5 +27,5 @@ public class TaskStartStop{
 				}
 			}
 		}
-	})
+	});
 }

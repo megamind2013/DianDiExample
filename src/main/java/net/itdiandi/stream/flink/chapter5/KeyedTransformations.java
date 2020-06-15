@@ -15,9 +15,9 @@
  */
 package net.itdiandi.stream.flink.chapter5;
 
-import io.github.streamingwithflink.util.SensorReading;
-import io.github.streamingwithflink.util.SensorSource;
-import io.github.streamingwithflink.util.SensorTimeAssigner;
+import net.itdiandi.stream.flink.util.SensorReading;
+import net.itdiandi.stream.flink.util.SensorSource;
+import net.itdiandi.stream.flink.util.SensorTimeAssigner;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.KeyedStream;

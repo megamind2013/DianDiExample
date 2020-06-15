@@ -1,4 +1,4 @@
-package net.itdiandi.flink.rpc.common;
+package net.itdiandi.stream.flink.rpc.common;
 
 import com.alibaba.fastjson.JSON;
 import io.netty.buffer.ByteBuf;

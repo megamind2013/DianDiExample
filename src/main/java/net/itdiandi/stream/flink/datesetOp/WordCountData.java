@@ -1,4 +1,4 @@
-package net.itdiandi.flink.datesetOp;
+package net.itdiandi.stream.flink.datesetOp;
 
 import org.apache.flink.api.java.DataSet;
 import org.apache.flink.api.java.ExecutionEnvironment;

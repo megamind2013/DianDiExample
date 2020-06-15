@@ -8,7 +8,7 @@ import org.apache.flink.table.api.java.StreamTableEnvironment;
 public class ProducerTestData {
     public static void main(String[] args) throws Exception {
         // Correct to your local path.
-        String sourceData = "E:\\Workspace\\DianDiExample\\DianDiExample\\flink1.10\\src\\main\\java\\net\\itdiandi\\flink\\kafka\\id_cnt_data.csv";
+        String sourceData = "/Workspace/Learn/DianDiExample/flink1.10/src/main/java/net/itdiandi/flink/kafka/id_cnt_data.csv";
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setParallelism(1);
         env.enableCheckpointing(1000, CheckpointingMode.AT_LEAST_ONCE);
@@ -35,7 +35,7 @@ public class ProducerTestData {
                 "'connector.type' = 'kafka'," +
                 "'connector.version' = '0.10'," +
                 "'connector.topic' = 'checkIdle'," +
-                "'connector.properties.bootstrap.servers' = 'localhost:9092'," +
+                "'connector.properties.bootstrap.servers' = '10.7.6.25:9092'," +
                 "'connector.sink-partitioner' = 'custom',"+
                 "'connector.sink-partitioner-class' = 'net.itdiandi.flink.kafka.MakeIdlePartitioner'," +
                 "'format.type' = 'json')";

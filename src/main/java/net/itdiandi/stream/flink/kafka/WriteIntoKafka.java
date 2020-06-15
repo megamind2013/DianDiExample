@@ -1,4 +1,4 @@
-package net.itdiandi.flink.kafka;
+package net.itdiandi.stream.flink.kafka;
 
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.flink.api.common.functions.MapFunction;

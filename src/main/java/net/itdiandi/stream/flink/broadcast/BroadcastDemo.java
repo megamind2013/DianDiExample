@@ -1,4 +1,4 @@
-package net.itdiandi.flink.broadcast;
+package net.itdiandi.stream.flink.broadcast;
 
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.functions.RichMapFunction;
@@ -12,7 +12,7 @@ import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.windowing.time.Time;
 
-import net.itdiandi.flink.stream.MyNoParalleSource;
+import net.itdiandi.stream.flink.stream.MyNoParalleSource;
 
 import java.util.ArrayList;
 import java.util.Collection;

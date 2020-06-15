@@ -1,4 +1,4 @@
-package net.itdiandi.flink.stream;
+package net.itdiandi.stream.flink.stream;
 
 
 import org.apache.flink.api.common.functions.Partitioner;
