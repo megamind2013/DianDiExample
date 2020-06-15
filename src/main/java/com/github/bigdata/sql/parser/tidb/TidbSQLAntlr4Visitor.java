@@ -20,7 +20,7 @@ public class TidbSQLAntlr4Visitor extends MySqlParserBaseVisitor<StatementData>{
     @Override 
     public StatementData visitCreateDatabase(MySqlParser.CreateDatabaseContext ctx) {
         String databaseName = ctx.uid().getText();
-        val sqlData = DcDatabase(databaseName);
+        DcDatabase sqlData = new DcDatabase(databaseName);
         return new StatementData(StatementType.CREATE_DATABASE, sqlData);
     }
 
@@ -29,7 +29,7 @@ public class TidbSQLAntlr4Visitor extends MySqlParserBaseVisitor<StatementData>{
         String databaseName = ctx.uid().getText();
         DcDatabase sqlData = new DcDatabase(databaseName);
 
-        return new StatementData(StatementType.DROP_DATABASE, sqlData)
+        return new StatementData(StatementType.DROP_DATABASE, sqlData);
     }
 
     //-----------------------------------table-------------------------------------------------
