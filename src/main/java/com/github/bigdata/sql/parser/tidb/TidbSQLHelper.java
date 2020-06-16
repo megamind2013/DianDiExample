@@ -6,13 +6,24 @@ import com.github.bigdata.sql.antlr4.PostProcessor;
 import com.github.bigdata.sql.antlr4.UpperCaseCharStream;
 import com.github.bigdata.sql.antlr4.mysql.MySqlLexer;
 import com.github.bigdata.sql.antlr4.mysql.MySqlParser;
+import com.github.bigdata.sql.antlr4.mysql.MySqlParser.AlterByAddColumnsContext;
+import com.github.bigdata.sql.antlr4.mysql.MySqlParser.TableNameContext;
+import com.github.bigdata.sql.antlr4.mysql.MySqlParser.UidContext;
 import com.github.bigdata.sql.parser.StatementType;
+
+import kotlin.jvm.JvmStatic;
+
 import com.github.bigdata.sql.parser.StatementData;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.atn.PredictionMode;
 import org.antlr.v4.runtime.misc.ParseCancellationException;
+import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNodeImpl;
 import org.apache.commons.lang.StringUtils;
 
@@ -35,7 +46,7 @@ public class TidbSQLHelper {
             return new StatementData(StatementType.SHOW, null);
         }
 
-        UpperCaseCharStream charStream = new UpperCaseCharStream(CharStreams.fromString(trimCmd))
+        UpperCaseCharStream charStream = new UpperCaseCharStream(CharStreams.fromString(trimCmd));
         MySqlLexer lexer = new MySqlLexer(charStream);
         lexer.removeErrorListeners();
         lexer.addErrorListener(new ParseErrorListener());
@@ -47,118 +58,119 @@ public class TidbSQLHelper {
         parser.addErrorListener(new ParseErrorListener());
         parser.getInterpreter().setPredictionMode(PredictionMode.SLL);
 
-        val sqlVisitor = new TidbSQLAntlr4Visitor();
+        TidbSQLAntlr4Visitor sqlVisitor = new TidbSQLAntlr4Visitor();
         try {
             try {
                 // first, try parsing with potentially faster SLL mode
-                val data = sqlVisitor.visit(parser.sqlStatement())
+                StatementData data = sqlVisitor.visit(parser.sqlStatement());
                 if(data == null) {
-                    return StatementData(StatementType.UNKOWN)
+                    return new StatementData(StatementType.UNKOWN);
                 } else {
-                    return data
+                    return data;
                 }
             }
-            catch (e: ParseCancellationException) {
-                tokenStream.seek(0) // rewind input stream
-                parser.reset()
+            catch (ParseCancellationException e) {
+                tokenStream.seek(0); // rewind input stream
+                parser.reset();
 
                 // Try Again.
-                parser.interpreter.predictionMode = PredictionMode.LL
-                val data = sqlVisitor.visit(parser.sqlStatement())
+                parser.getInterpreter().setPredictionMode(PredictionMode.LL);
+                StatementData data = sqlVisitor.visit(parser.sqlStatement());
                 if(data == null) {
-                    return StatementData(StatementType.UNKOWN)
+                    return new StatementData(StatementType.UNKOWN);
                 } else {
-                    return data
+                    return data;
                 }
             }
-        } catch (e: ParseException) {
-            if(StringUtils.isNotBlank(e.command)) {
+        } catch (ParseException e) {
+            if(StringUtils.isNotBlank(e.getCommand())) {
                 throw e;
             } else {
-                throw e.withCommand(trimCmd)
+                throw e.withCommand(trimCmd);
             }
         }
     }
 
-    @JvmStatic fun splitAlterSql(sql: String): List<String> {
-        val _items = mutableListOf<String>()
+    @JvmStatic 
+    public List<String> splitAlterSql(String sql) {
+        List<String> _items = new ArrayList<String>();
 
-        val charStream = UpperCaseCharStream(CharStreams.fromString(sql))
-        val lexer = MySqlLexer(charStream)
-        lexer.removeErrorListeners()
-        lexer.addErrorListener(ParseErrorListener())
+        UpperCaseCharStream charStream = new UpperCaseCharStream(CharStreams.fromString(sql));
+        MySqlLexer lexer = new MySqlLexer(charStream);
+        lexer.removeErrorListeners();
+        lexer.addErrorListener(new ParseErrorListener());
 
-        val tokens = CommonTokenStream(lexer)
-        val parser = MySqlParser(tokens)
-        val statement = parser.sqlStatement().getChild(0).getChild(0)
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        MySqlParser parser = new MySqlParser(tokens);
+        ParseTree statement = parser.sqlStatement().getChild(0).getChild(0);
 
-        if (statement is MySqlParser.AlterTableContext) {
-            val tableNameContext = statement.getChild(2) as MySqlParser.TableNameContext
-            val stopIndex = tableNameContext.stop.stopIndex
-            val alterSqlPrefix = StringUtils.substring(sql, 0, stopIndex + 1);
+        if (statement instanceof MySqlParser.AlterTableContext) {
+        	TableNameContext tableNameContext = (TableNameContext)statement.getChild(2);
+            int stopIndex = tableNameContext.stop.getStopIndex();
+            String alterSqlPrefix = StringUtils.substring(sql, 0, stopIndex + 1);
 
-            val childStat = statement.getChild(3)
-            if (childStat is MySqlParser.AlterByAddColumnsContext) {
-                val child = childStat.getChild(2)
-                var startIndex = if(child is MySqlParser.UidContext) {
-                    val rightNode = child.getChild(0)
-                    if (rightNode is TerminalNodeImpl) {
-                        rightNode.symbol.startIndex
+            ParseTree childStat = statement.getChild(3);
+            if (childStat instanceof AlterByAddColumnsContext) {
+            	ParseTree child = childStat.getChild(2);
+                int startIndex = ((TerminalNodeImpl)child).symbol.getStartIndex() + 1;
+                if(child instanceof UidContext) {
+                	ParseTree rightNode = child.getChild(0);
+                    if (rightNode instanceof TerminalNodeImpl) {
+                    	startIndex = ((TerminalNodeImpl) rightNode).getSymbol().getStartIndex();
                     } else {
-                        val node = rightNode.getChild(0) as TerminalNodeImpl
-                        node.symbol.startIndex
+                    	TerminalNodeImpl node = (TerminalNodeImpl)rightNode.getChild(0);
+                    	startIndex = node.symbol.getStartIndex();
                     }
-                } else {
-                    val right = child as TerminalNodeImpl
-                    right.symbol.startIndex + 1
                 }
 
-                for(i in 3 .. childStat.childCount) {
-                    val node = childStat.getChild(i)
-                    if(node is TerminalNodeImpl) {
-                        if("," == node.text) {
-                            val alterSql = StringUtils.substring(sql, startIndex, node.symbol.startIndex)
-                            _items.add(alterSqlPrefix + " ADD COLUMN " + alterSql)
-                            startIndex = node.symbol.startIndex + 1
+                for(int i=3;i<childStat.getChildCount();i++) {
+                    ParseTree node = childStat.getChild(i);
+                    if(node instanceof TerminalNodeImpl) {
+                        if("," == node.getText()) {
+                            String alterSql = StringUtils.substring(sql, startIndex, ((TerminalNodeImpl) node).getSymbol().getStartIndex());
+                            _items.add(alterSqlPrefix + " ADD COLUMN " + alterSql);
+                            startIndex = ((TerminalNodeImpl) node).getSymbol().getStartIndex() + 1;
                         }
                     }
                 }
 
-                var alterSql = StringUtils.substring(sql, startIndex)
-                alterSql = StringUtils.substringBeforeLast(alterSql, ")")
-                _items.add(alterSqlPrefix + " ADD COLUMN " + alterSql)
+                String alterSql = StringUtils.substring(sql, startIndex);
+                alterSql = StringUtils.substringBeforeLast(alterSql, ")");
+                _items.add(alterSqlPrefix + " ADD COLUMN " + alterSql);
 
             } else {
-                val childCount = statement.childCount;
+                int childCount = statement.getChildCount();
 
-                var index = 3
+                int index = 3;
                 while (index < childCount) {
-                    val startContext = statement.getChild(index) as ParserRuleContext
-                    index = index + 1
-                    val stopContext:TerminalNodeImpl?
-                            = if(index<childCount) statement.getChild(index) as TerminalNodeImpl else null
+                	ParserRuleContext startContext = (ParserRuleContext)statement.getChild(index);
+                    index = index + 1;
+                    TerminalNodeImpl stopContext = null;
+                    if(index<childCount) 
+                    	stopContext = (TerminalNodeImpl)statement.getChild(index);
 
-                    val startIndex = startContext.start.startIndex
-                    val stopIndex = if(stopContext != null) stopContext.symbol.startIndex else -1;
+                    int startIndex = startContext.start.getStartIndex();
+                    stopIndex = -1;
+                    if(stopContext != null) 
+                    	stopIndex = stopContext.symbol.getStartIndex();
 
-                    var sql = if(stopIndex > 0) {
-                        StringUtils.substring(sql, startIndex, stopIndex)
-                    } else {
-                        StringUtils.substring(sql, startIndex)
-                    }
+                    sql = StringUtils.substring(sql, startIndex);
+                    if(stopIndex > 0) {
+                    	sql = StringUtils.substring(sql, startIndex, stopIndex);
+                    } 
 
-                    sql = StringUtils.trim(sql)
+                    sql = StringUtils.trim(sql);
                     if(StringUtils.endsWith(sql, ";")) {
-                        sql = StringUtils.substring(sql, 0, -1)
+                        sql = StringUtils.substring(sql, 0, -1);
                     }
 
-                    _items.add(alterSqlPrefix + " " + sql)
+                    _items.add(alterSqlPrefix + " " + sql);
 
-                    index = index + 1
+                    index = index + 1;
                 }
             }
         }
 
-        return _items.toList()
+        return _items;
     }
 }

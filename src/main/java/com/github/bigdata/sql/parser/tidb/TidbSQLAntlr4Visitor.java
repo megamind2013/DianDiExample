@@ -36,7 +36,7 @@ public class TidbSQLAntlr4Visitor extends MySqlParserBaseVisitor<StatementData>{
     @Override 
     public StatementData visitColumnCreateTable(MySqlParser.ColumnCreateTableContext ctx) {
         val (databaseName, tableName) = parseFullId(ctx.tableName().fullId());
-        var comment: String? = null
+        String comment = null;
         ctx.tableOption().forEach {
             when(it) {
                 is MySqlParser.TableOptionCommentContext -> {
@@ -45,9 +45,9 @@ public class TidbSQLAntlr4Visitor extends MySqlParserBaseVisitor<StatementData>{
                 else -> null
             }
         }
-        val columns = ArrayList<DcColumn>()
-        val uniques = ArrayList<TidbColumn>()
-        val properties = HashMap<String, String>()
+        val columns = ArrayList<DcColumn>();
+        val uniques = ArrayList<TidbColumn>();
+        val properties = HashMap<String, String>();
 
         ctx.createDefinitions().children.forEach { column ->
             if(column is MySqlParser.ColumnDeclarationContext ) {
@@ -314,12 +314,12 @@ public class TidbSQLAntlr4Visitor extends MySqlParserBaseVisitor<StatementData>{
                 limit = ctx.limit.text.toInt()
             }
         }
-        return null
+        return null;
     }
 
-    private fun parseFullId(fullId: MySqlParser.FullIdContext): Pair<String?, String> {
-        var databaseName:String? = null
-        var tableName = ""
+    private Pair<String, String> parseFullId(MySqlParser.FullIdContext fullId)  {
+    	String databaseName = null;
+        var tableName = "";
 
         if(fullId.childCount == 2) {
             databaseName = fullId.uid().get(0).text
@@ -328,14 +328,14 @@ public class TidbSQLAntlr4Visitor extends MySqlParserBaseVisitor<StatementData>{
             databaseName = StringUtil.cleanQuote(fullId.uid().get(0).text)
             tableName = StringUtil.cleanQuote((fullId.getChild(2) as MySqlParser.UidContext).text)
         } else {
-            tableName = fullId.uid().get(0).text
+            tableName = fullId.uid().get(0).text;
         }
 
         if(databaseName != null) {
-            databaseName = StringUtil.cleanQuote(databaseName)
+            databaseName = StringUtil.cleanQuote(databaseName);
         }
         if(tableName != null) {
-            tableName = StringUtil.cleanQuote(tableName)
+            tableName = StringUtil.cleanQuote(tableName);
         }
 
         return Pair(databaseName, tableName);
