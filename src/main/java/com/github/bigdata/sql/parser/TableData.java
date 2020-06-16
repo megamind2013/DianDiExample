@@ -1,11 +1,21 @@
 package com.github.bigdata.sql.parser;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class TableData {
+public class TableData extends Statement {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<TableSource> inputTables = new ArrayList<>();
 	private ArrayList<TableSource> outpuTables = new ArrayList<>();
 	private Integer limit;
+	public TableData() {
+	}
+	public TableData(ArrayList<TableSource> tables) {
+		this.inputTables = tables;
+	}
 	public ArrayList<TableSource> getInputTables() {
 		return inputTables;
 	}

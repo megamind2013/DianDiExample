@@ -20,6 +20,21 @@ public class DcColumn extends Statement {
     	this.oldName = oldName;
     }
 
+	public DcColumn(String name, String type, String comment) {
+		this.name = name;
+    	this.type = type;
+    	this.comment = comment;
+	}
+
+	public DcColumn(String name) {
+		this.name = name;
+	}
+
+	public DcColumn(String name, String type) {
+		this.name = name;
+    	this.type = type;
+	}
+
 	public String getName() {
 		return name;
 	}

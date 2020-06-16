@@ -12,6 +12,14 @@ public class TableSource extends Statement {
 	private String tableName;
 	private DcColumn column;
 	private List<String> columns = new ArrayList<>();
+	
+	public TableSource() {}
+	
+	public TableSource(String databaseName, String tableName) {
+		this.databaseName = databaseName;
+		this.tableName = tableName;
+	}
+	
 	public String getDatabaseName() {
 		return databaseName;
 	}
