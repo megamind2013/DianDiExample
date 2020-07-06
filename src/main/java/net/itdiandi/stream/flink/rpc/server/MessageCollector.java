@@ -4,10 +4,10 @@ import com.google.common.collect.Queues;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import net.itdiandi.flink.rpc.common.IMessageHandler;
-import net.itdiandi.flink.rpc.common.MessageHandlers;
-import net.itdiandi.flink.rpc.common.MessageInput;
-import net.itdiandi.flink.rpc.common.MessageRegistry;
+import net.itdiandi.stream.flink.rpc.common.IMessageHandler;
+import net.itdiandi.stream.flink.rpc.common.MessageHandlers;
+import net.itdiandi.stream.flink.rpc.common.MessageInput;
+import net.itdiandi.stream.flink.rpc.common.MessageRegistry;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

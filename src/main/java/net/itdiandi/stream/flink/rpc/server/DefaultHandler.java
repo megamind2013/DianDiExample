@@ -1,8 +1,8 @@
 package net.itdiandi.stream.flink.rpc.server;
 
 import io.netty.channel.ChannelHandlerContext;
-import net.itdiandi.flink.rpc.common.IMessageHandler;
-import net.itdiandi.flink.rpc.common.MessageInput;
+import net.itdiandi.stream.flink.rpc.common.IMessageHandler;
+import net.itdiandi.stream.flink.rpc.common.MessageInput;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

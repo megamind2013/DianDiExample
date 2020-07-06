@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 import java.text.SimpleDateFormat;
 import java.util.concurrent.TimeUnit;
 
-import static net.itdiandi.flink.stream.WindowComputeUtil.myGetWindowStartWithOffset;
+import static net.itdiandi.stream.flink.stream.WindowComputeUtil.myGetWindowStartWithOffset;
 
 public class StreamJoinDemo {
 

@@ -1,9 +1,9 @@
 package net.itdiandi.stream.flink.rpc.demo;
 
 import io.netty.channel.ChannelHandlerContext;
-import net.itdiandi.flink.rpc.common.IMessageHandler;
-import net.itdiandi.flink.rpc.common.MessageOutput;
-import net.itdiandi.flink.rpc.server.RPCServer;
+import net.itdiandi.stream.flink.rpc.common.IMessageHandler;
+import net.itdiandi.stream.flink.rpc.common.MessageOutput;
+import net.itdiandi.stream.flink.rpc.server.RPCServer;
 
 import java.util.ArrayList;
 import java.util.List;

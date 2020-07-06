@@ -2,8 +2,8 @@ package net.itdiandi.stream.flink.rpc.demo;
 
 import java.io.Serializable;
 
-import net.itdiandi.flink.rpc.client.RPCClient;
-import net.itdiandi.flink.rpc.client.RPCException;
+import net.itdiandi.stream.flink.rpc.client.RPCClient;
+import net.itdiandi.stream.flink.rpc.client.RPCException;
 
 //RPC客户端
 public class DemoClient implements Serializable {

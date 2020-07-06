@@ -13,9 +13,9 @@ import org.apache.flink.streaming.api.watermark.Watermark;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.util.Collector;
 
-import net.itdiandi.flink.rpc.client.RPCClient;
-import net.itdiandi.flink.rpc.client.RPCException;
-import net.itdiandi.flink.rpc.demo.DemoClient;
+import net.itdiandi.stream.flink.rpc.client.RPCClient;
+import net.itdiandi.stream.flink.rpc.client.RPCException;
+import net.itdiandi.stream.flink.rpc.demo.DemoClient;
 
 import javax.annotation.Nullable;
 import java.text.SimpleDateFormat;

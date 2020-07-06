@@ -12,8 +12,8 @@ import org.apache.hadoop.hbase.client.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import net.itdiandi.flink.hbase.loader.HBaseLoader;
-import net.itdiandi.flink.hbase.loader.HBaseUtils;
+import net.itdiandi.stream.flink.hbase.loader.HBaseLoader;
+import net.itdiandi.stream.flink.hbase.loader.HBaseUtils;
 
 import java.io.IOException;
 import java.util.*;

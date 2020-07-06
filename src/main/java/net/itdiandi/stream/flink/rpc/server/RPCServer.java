@@ -6,11 +6,11 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.timeout.ReadTimeoutHandler;
-import net.itdiandi.flink.rpc.common.IMessageHandler;
-import net.itdiandi.flink.rpc.common.MessageDecoder;
-import net.itdiandi.flink.rpc.common.MessageEncoder;
-import net.itdiandi.flink.rpc.common.MessageHandlers;
-import net.itdiandi.flink.rpc.common.MessageRegistry;
+import net.itdiandi.stream.flink.rpc.common.IMessageHandler;
+import net.itdiandi.stream.flink.rpc.common.MessageDecoder;
+import net.itdiandi.stream.flink.rpc.common.MessageEncoder;
+import net.itdiandi.stream.flink.rpc.common.MessageHandlers;
+import net.itdiandi.stream.flink.rpc.common.MessageRegistry;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
