@@ -16,6 +16,13 @@ public class DcCopyTable extends Statement{
 	private Boolean temporary = false;
 
 	public DcCopyTable() {}
+	// new DcCopyTable(oldDatabaseName, oldTableName, newDatabaseName, newTableName);
+	public DcCopyTable(String oldDatabaseName,String oldTableName,String newDatabaseName,String newTableName){
+		this.oldDatabaseName = oldDatabaseName;
+		this.oldTableName = oldTableName;
+		this.newDatabaseName = newDatabaseName;
+		this.newTableName = newTableName;
+	}
 	public DcCopyTable(String oldDatabaseName,String oldTableName,String newDatabaseName,String newTableName,Boolean ifNotExists,Boolean external,Boolean temporary) {
 		this.oldDatabaseName = oldDatabaseName;
 		this.oldTableName = oldTableName;

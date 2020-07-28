@@ -11,6 +11,10 @@ public class DcFunction extends Statement {
     private String file;
 
     public DcFunction() {}
+
+	public DcFunction(String name) {
+		this.name = name;
+	}
     
     public DcFunction(String name,String className,String file) {
     	this.name = name;

@@ -11,7 +11,7 @@ public class DcTable extends Statement{
 	private String databaseName;
 	private String tableName;
 	private String comment;
-	private int lifeCycle;
+	private Integer lifeCycle;
 	private List<DcColumn> partitionColumns;
 	private List<DcColumn> columns;
 	private Map<String, String> properties ;
@@ -23,8 +23,29 @@ public class DcTable extends Statement{
 	private Boolean location = false;
 	private String querySql = null;
 	private TableData tableData = null; //是否存在 if exists 关键字
-	
-	public DcTable(String databaseName,String tableName,String comment,int lifeCycle,List<DcColumn> partitionColumns,List<DcColumn> columns) {
+
+	public DcTable(String databaseName,String tableName,String comment,Integer lifeCycle,List<DcColumn> partitionColumns,List<DcColumn> columns,Map<String, String> properties,String fileFormate) {
+		this.databaseName  = databaseName;
+		this.tableName  = tableName;
+		this.comment  = comment;
+		this.lifeCycle  = lifeCycle;
+		this.partitionColumns  = partitionColumns;
+		this.columns  = columns;
+		this.properties = properties;
+		this.fileFormate = fileFormate;
+	}
+
+	public DcTable(String databaseName,String tableName,String comment,Integer lifeCycle,List<DcColumn> partitionColumns,List<DcColumn> columns,String fileFormate) {
+		this.databaseName  = databaseName;
+		this.tableName  = tableName;
+		this.comment  = comment;
+		this.lifeCycle  = lifeCycle;
+		this.partitionColumns  = partitionColumns;
+		this.columns  = columns;
+		this.fileFormate = fileFormate;
+	}
+
+	public DcTable(String databaseName,String tableName,String comment,Integer lifeCycle,List<DcColumn> partitionColumns,List<DcColumn> columns) {
 		this.databaseName  = databaseName;
 		this.tableName  = tableName;
 		this.comment  = comment;
@@ -62,11 +83,11 @@ public class DcTable extends Statement{
 		this.comment = comment;
 	}
 
-	public int getLifeCycle() {
+	public Integer getLifeCycle() {
 		return lifeCycle;
 	}
 
-	public void setLifeCycle(int lifeCycle) {
+	public void setLifeCycle(Integer lifeCycle) {
 		this.lifeCycle = lifeCycle;
 	}
 

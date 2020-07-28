@@ -1,6 +1,18 @@
 package com.github.bigdata.sql.parser;
 
-public class DcView {
+public class DcView extends Statement{
+	// DcView(databaseName, tableName)
+	public DcView(){}
+	public DcView(String databaseName,String tableName){
+		this.databaseName = databaseName;
+		this.tableName = tableName;
+	}
+	public DcView(String databaseName,String tableName,String comment,boolean ifNotExists){
+		this.databaseName = databaseName;
+		this.tableName = tableName;
+		this.comment = comment;
+		this.ifNotExists = ifNotExists;
+	}
 	private String databaseName;
 
 	private String tableName;

@@ -15,7 +15,11 @@ public class LoadData extends Statement {
     private List<String> partitionVals;
 
     public LoadData() {}
-    
+	public LoadData(String databaseName,String tableName) {
+		this.databaseName = databaseName;
+		this.tableName = tableName;
+	}
+
     public LoadData(String databaseName,String tableName,String loadMode,String resourceName,List<String> partitionVals) {
     	this.databaseName = databaseName;
     	this.tableName = tableName;

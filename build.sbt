@@ -1,5 +1,6 @@
 import sbt.Keys.libraryDependencies
 
+
 ThisBuild / resolvers ++= Seq(
   Resolver.mavenLocal,
   "aliyun" at "http://maven.aliyun.com/nexus/content/groups/public/",
@@ -50,7 +51,8 @@ val flinkDependencies = Seq(
 
 )
 
-
+//addSbtPlugin("com.hanhuy.sbt" % "kotlin-plugin" % "2.0.0")
+addSbtPlugin("com.hanhuy.sbt" % "kotlin-plugin" % "1.0.9")
 
 val mysqlJdbcVersion = "5.1.8"
 
